@@ -1,0 +1,14 @@
+package chess_cli.ChessPieces;
+
+public class ChessPieceCli {
+	private String name;
+	private boolean color;
+	private int row, column;
+	
+	public ChessPieceCli(boolean color, int row, int column) {
+		this.color = color;
+		this.row = row;
+		this.column = column;
+	}
+}
+

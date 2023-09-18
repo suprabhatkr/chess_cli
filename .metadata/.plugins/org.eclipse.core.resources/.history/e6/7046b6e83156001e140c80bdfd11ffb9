@@ -1,0 +1,5 @@
+package chess_cli;
+
+public class ChessBoardCli {
+	
+}

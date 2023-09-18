@@ -1,0 +1,17 @@
+package chess_cli.ChessPieces;
+import chess_cli.ChessBoardCli;
+
+public class ChessPieceCli {
+	private String name;
+	private boolean color;
+	private int row, column;
+	private ChessBoardCli chessBoard;
+	
+	public ChessPieceCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
+		this.color = color;
+		this.row = row;
+		this.column = column;
+		this.chessBoard = chessBoard;
+	}
+}
+
