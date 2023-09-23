@@ -13,6 +13,4 @@ public class ChessSquareCli {
 	public ChessPieceCli getChessPiece() {
 		return this.chessPiece;
 	}
-	
-	
 }

@@ -25,9 +25,5 @@ public class ChessPieceCli {
 	public ArrayList<PositionCli> getValidMoves() {
 		return null;
 	}
-	
-	public String getName() {
-		return this.name;
-	}
 }
 

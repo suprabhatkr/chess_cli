@@ -3,22 +3,22 @@ package chess_cli.ChessPieces;
 import chess_cli.ChessBoardCli;
 import java.util.ArrayList;
 
-public class BishopCli extends ChessPieceCli {
-    public BishopCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
+public class RookCli extends ChessPieceCli {
+    public RookCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
         super(chessBoard, color, row, column);
-        this.name = "bshp";
+        this.name = "rook";
     }
 
     @Override
     public ArrayList<PositionCli> getValidMoves() {
         ArrayList<PositionCli> validMoves = new ArrayList<PositionCli>();
 
-        // Define diagonal move directions
-        int[][] diagonalOffsets = {
-            {-1, -1}, {-1, 1}, {1, -1}, {1, 1}
+        // Define horizontal and vertical move directions
+        int[][] moveOffsets = {
+            {-1, 0}, {1, 0}, {0, -1}, {0, 1}
         };
 
-        for (int[] offset : diagonalOffsets) {
+        for (int[] offset : moveOffsets) {
             int newRow = this.position.getRow() + offset[0];
             int newColumn = this.position.getColumn() + offset[1];
 
@@ -34,7 +34,7 @@ public class BishopCli extends ChessPieceCli {
                     break;  // Stop if own piece is encountered
                 }
 
-                // Continue moving along the diagonal
+                // Continue moving in the same direction
                 newRow += offset[0];
                 newColumn += offset[1];
             }

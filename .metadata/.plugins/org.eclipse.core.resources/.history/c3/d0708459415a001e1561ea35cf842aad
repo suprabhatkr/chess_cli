@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class KnightCli extends ChessPieceCli {
     public KnightCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
         super(chessBoard, color, row, column);
-        this.name = "kngt";
+        this.name = "knight";
     }
 
     @Override
