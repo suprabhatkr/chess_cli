@@ -1,2 +1,2 @@
-chess_cli/bin/
-.metadata/
+/chess_cli/bin/
+/.metadata/
