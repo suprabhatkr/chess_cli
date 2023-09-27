@@ -1,0 +1,8 @@
+package chess_cli;
+
+import chess_cli.ChessPieces.ChessPieceCli;
+
+public class GameCli {
+	ChessBoardCli chessBoard = new ChessBoardCli();
+	chessBoard.printChessBoard();
+}

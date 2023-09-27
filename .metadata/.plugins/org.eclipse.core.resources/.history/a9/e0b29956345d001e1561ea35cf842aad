@@ -9,7 +9,6 @@ public class ChessBoardCli {
     public ChessBoardCli() {
     	chessBoard = new ArrayList<>();
     	initializeSquares();
-    	initializePieces();
     }
     
     private void initializeSquares() {
@@ -42,32 +41,41 @@ public class ChessBoardCli {
             color = false ? i == 0 : true;
 
             chessPiece = new RookCli(this, color, row, 0);
-            this.getChessSquare(row, 0).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 0).setChessPiece(chessPiece);
 
             chessPiece = new KnightCli(this, color, row, 1);
-            this.getChessSquare(row, 1).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 1).setChessPiece(chessPiece);
 
             chessPiece = new BishopCli(this, color, row, 2);
-            this.getChessSquare(row, 2).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 2).setChessPiece(chessPiece);
 
             chessPiece = new QueenCli(this, color, row, 3);
-            this.getChessSquare(row, 3).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 3).setChessPiece(chessPiece);
 
             chessPiece = new KingCli(this, color, row, 4);
-            this.getChessSquare(row, 4).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 4).setChessPiece(chessPiece);
 
             chessPiece = new BishopCli(this, color, row, 5);
-            this.getChessSquare(row, 5).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 5).setChessPiece(chessPiece);
 
             chessPiece = new KnightCli(this, color, row, 6);
-            this.getChessSquare(row, 6).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 6).setChessPiece(chessPiece);
 
             chessPiece = new RookCli(this, color, row, 7);
-            this.getChessSquare(row, 7).setChessPiece(chessPiece);
+            getPlayer(i).addChessPiece(chessPiece);
+            chessBoard.getChessSquare(row, 7).setChessPiece(chessPiece);
 
             for (int col = 0; col < 8; col++) {
                 chessPiece = new PawnCli(this, color, Math.abs(row - 1), col);
-                this.getChessSquare(Math.abs(row - 1), col).setChessPiece(chessPiece);
+                getPlayer(i).addChessPiece(chessPiece);
+                chessBoard.getChessSquare(Math.abs(row - 1), col).setChessPiece(chessPiece);
             }
 
         }
@@ -80,23 +88,4 @@ public class ChessBoardCli {
     public ChessSquareCli getChessSquare(int row, int column) {
         return chessBoard.get(row).get(column);
     }
-    
-    public void printChessBoard() {
-    	System.out.print("  ");
-    	for (int j = 1; j <= 8; j++) {
-    		System.out.print("  " + j + "  ");
-    	}
-    	System.out.print("\n");
-		for (int i = 0; i < 8; i++) {
-			System.out.print((char) (65 + i) + " ");
-			for (int j = 0; j < 8; j++) {
-				ChessPieceCli chessPiece = this.getChessSquare(i, j).getChessPiece();
-				if (chessPiece == null)
-					System.out.print("**** ");
-				else 
-					System.out.print(chessPiece.getName() + " ");
-			}
-			System.out.print("\n");
-		}
-	}
 }

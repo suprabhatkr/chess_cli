@@ -80,23 +80,4 @@ public class ChessBoardCli {
     public ChessSquareCli getChessSquare(int row, int column) {
         return chessBoard.get(row).get(column);
     }
-    
-    public void printChessBoard() {
-    	System.out.print("  ");
-    	for (int j = 1; j <= 8; j++) {
-    		System.out.print("  " + j + "  ");
-    	}
-    	System.out.print("\n");
-		for (int i = 0; i < 8; i++) {
-			System.out.print((char) (65 + i) + " ");
-			for (int j = 0; j < 8; j++) {
-				ChessPieceCli chessPiece = this.getChessSquare(i, j).getChessPiece();
-				if (chessPiece == null)
-					System.out.print("**** ");
-				else 
-					System.out.print(chessPiece.getName() + " ");
-			}
-			System.out.print("\n");
-		}
-	}
 }
