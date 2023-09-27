@@ -21,7 +21,6 @@ public class PawnCli extends ChessPieceCli {
             validMoves.add(new PositionCli(newRow, newColumn));
         }
 
-        // Add capturing moves
         int[] captureOffsets = {-1, 1};
         for (int offset : captureOffsets) {
             newRow = this.position.getRow() + forwardDirection;

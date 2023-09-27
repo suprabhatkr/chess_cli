@@ -1,8 +1,0 @@
-INDEX VERSION 1.134+/Users/suprabhat/Developer/eclipse-workspace/chess_cli/.metadata/.plugins/org.eclipse.jdt.core
-4121896876.index
-3149873736.index
-882982107.index
-1865797976.index
-2903723243.index
-3453539238.index
-3869301417.index

@@ -1,6 +1,0 @@
-package chess_cli;
-
-public class ChessSquareCli {
-	private boolean filled;
-	private ChessPiece chessPiece;
-}

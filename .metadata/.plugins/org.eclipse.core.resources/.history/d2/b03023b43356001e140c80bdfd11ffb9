@@ -1,5 +1,0 @@
-package chess_cli.ChessPieces;
-
-public class BishopCli {
-
-}

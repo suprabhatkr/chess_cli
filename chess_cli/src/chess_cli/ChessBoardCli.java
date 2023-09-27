@@ -86,7 +86,6 @@ public class ChessBoardCli {
         return chessBoard.get(row).get(column);
     }
     
-    // write method for get all player with its valid moves of particular type
     public Map<PositionCli, ArrayList<PositionCli>> getPieceMoves(boolean color) {
     	Map<PositionCli, ArrayList<PositionCli>> pieceMoves = new HashMap<PositionCli, ArrayList<PositionCli>>();
     	for (int i = 0; i < 8; i++) {
