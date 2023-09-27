@@ -27,7 +27,7 @@ public class RookCli extends ChessPieceCli {
 
                 if (targetPiece == null) {
                     validMoves.add(new PositionCli(newRow, newColumn));
-                } else if (targetPiece.isGold() != this.isSilver()) {
+                } else if (targetPiece.isGold() == this.isSilver()) {
                     validMoves.add(new PositionCli(newRow, newColumn));
                     break;  // Stop if an opponent's piece is encountered
                 } else {

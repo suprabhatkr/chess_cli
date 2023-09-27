@@ -1,0 +1,22 @@
+package chess_cli;
+
+import chess_cli.ChessPieces.ChessPieceCli;
+import java.util.Scanner;
+
+public class GameCli {
+	ChessBoardCli chessBoard;
+	Scanner scanner;
+	ChessPlayerCli player1, player2;
+	
+	public GameCli(boolean cli) {
+		scanner = new Scanner(System.in);
+		chessBoard = new ChessBoardCli();
+		if (cli) {
+			chessBoard.printChessBoard();
+			
+			System.out.print("Enter First Player Name : ");
+			player1.set = scanner.nextLine();
+			String 
+		}
+	}
+}

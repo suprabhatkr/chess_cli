@@ -28,7 +28,7 @@ public class KnightCli extends ChessPieceCli {
             if (isValidPosition(newRow, newColumn)) {
                 ChessPieceCli targetPiece = chessBoard.getChessSquare(newRow, newColumn).getChessPiece();
 
-                if (targetPiece == null || targetPiece.isGold() != this.isSilver()) {
+                if (targetPiece == null || targetPiece.isGold() == this.isSilver()) {
                     validMoves.add(new PositionCli(newRow, newColumn));
                 }
             }

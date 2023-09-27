@@ -19,7 +19,7 @@ public class QueenCli extends ChessPieceCli {
                 for (int newRow = this.position.getRow() + offset; isValidPosition(newRow, this.position.getColumn()); newRow += offset) {
                     if (chessBoard.getChessSquare(newRow, this.position.getColumn()).isEmpty()) {
                         validMoves.add(new PositionCli(newRow, this.position.getColumn()));
-                    } else if (chessBoard.getChessSquare(newRow, this.position.getColumn()).getChessPiece().isGold() != this.isSilver()) {
+                    } else if (chessBoard.getChessSquare(newRow, this.position.getColumn()).getChessPiece().isGold() == this.isSilver()) {
                         validMoves.add(new PositionCli(newRow, this.position.getColumn()));
                         break;
                     } else {
@@ -30,7 +30,7 @@ public class QueenCli extends ChessPieceCli {
                 for (int newColumn = this.position.getColumn() + offset; isValidPosition(this.position.getRow(), newColumn); newColumn += offset) {
                     if (chessBoard.getChessSquare(this.position.getRow(), newColumn).isEmpty()) {
                         validMoves.add(new PositionCli(this.position.getRow(), newColumn));
-                    } else if (chessBoard.getChessSquare(this.position.getRow(), newColumn).getChessPiece().isGold() != this.isSilver()) {
+                    } else if (chessBoard.getChessSquare(this.position.getRow(), newColumn).getChessPiece().isGold() == this.isSilver()) {
                         validMoves.add(new PositionCli(this.position.getRow(), newColumn));
                         break;
                     } else {
@@ -49,7 +49,7 @@ public class QueenCli extends ChessPieceCli {
                      newRow += rowOffset, newColumn += colOffset) {
                     if (chessBoard.getChessSquare(newRow, newColumn).isEmpty()) {
                         validMoves.add(new PositionCli(newRow, newColumn));
-                    } else if (chessBoard.getChessSquare(newRow, newColumn).getChessPiece().isGold() != this.isSilver()) {
+                    } else if (chessBoard.getChessSquare(newRow, newColumn).getChessPiece().isGold() == this.isSilver()) {
                         validMoves.add(new PositionCli(newRow, newColumn));
                         break;
                     } else {
