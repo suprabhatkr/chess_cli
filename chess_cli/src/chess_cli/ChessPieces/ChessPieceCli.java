@@ -1,17 +1,20 @@
 package chess_cli.ChessPieces;
 import chess_cli.ChessBoardCli;
-import java.util.ArrayList;
+import java.util.*;
 
 public class ChessPieceCli {
 	protected String name;
 	protected boolean color;
-	protected PositionCli position;
+	protected int row, column;
 	protected ChessBoardCli chessBoard;
+	protected ArrayList<String> validMoves;
 	
 	public ChessPieceCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
 		this.color = color;
-		this.position = new PositionCli(row, column);
+		this.row = row;
+		this.column = column;
 		this.chessBoard = chessBoard;
+		validMoves = new ArrayList<String>();
 	}
 	
 	public boolean isGold() {
@@ -22,12 +25,18 @@ public class ChessPieceCli {
 		return !this.color;
 	}
 	
-	public ArrayList<PositionCli> getValidMoves() {
+	public ArrayList<String> getValidMoves() {
 		return null;
 	}
 	
 	public String getName() {
 		return this.name;
 	}
+	
+	public void setPosition(int row, int column) {
+		this.row = row;
+		this.column = column;
+	}
+	
 }
 

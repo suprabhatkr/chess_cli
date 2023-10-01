@@ -28,17 +28,30 @@ public class GameCli {
 			
 			// TODO: loop for playing games until some result comes or quit is called
 			while (true) {
-				if (turn) {
-					for (Map.Entry<PositionCli, ArrayList<PositionCli>> validMoves: chessBoard.getPieceMoves(turn).entrySet()) {
-						System.out.print("Init Position : " + validMoves.getKey().getRow() + validMoves.getKey().getColumn() + " Valid Moves :");
-						for (PositionCli validMove: validMoves.getValue()) {
-							System.out.print(" " + validMove.getRow() + validMove.getColumn());
-						}
-						System.out.print("\n");
+				chessBoard.printChessBoard();
+				for (Map.Entry<String, ArrayList<String>> validMoves: chessBoard.getPieceMoves(turn).entrySet()) {
+					System.out.print("Init Position : " + validMoves.getKey() + " Valid Moves :");
+					for (String validMove: validMoves.getValue()) {
+						System.out.print(" " + validMove);
 					}
+					System.out.print("\n");
+				}
+				System.out.print("Enter you current Position (or quit) : ");
+				String initSquare = scanner.nextLine();
+				if (initSquare.equals("quit")) {
 					break;
 				}
-				break;
+				System.out.print("Enter your destination (or quit) : ");
+				String destinationSquare = scanner.nextLine();
+				if (destinationSquare.equals("quit")) {
+					break;
+				}
+				if (chessBoard.isValidMove(initSquare, destinationSquare)) {
+					chessBoard.move(initSquare, destinationSquare);
+					turn = !turn;
+				} else {
+					System.out.println("Enter valid steps");
+				}
 			}
 		}
 	}

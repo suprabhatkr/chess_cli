@@ -15,4 +15,9 @@ public class PositionCli {
 	public int getColumn() {
 		return this.column;
 	}
+	
+	public String getPositionString() {
+		return ((char)(getRow() + 64) + Integer.toString(getColumn() + 1));
+	}
+	
 }

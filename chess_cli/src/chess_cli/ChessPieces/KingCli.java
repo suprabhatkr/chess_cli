@@ -10,8 +10,8 @@ public class KingCli extends ChessPieceCli {
     }
 
     @Override
-    public ArrayList<PositionCli> getValidMoves() {
-        ArrayList<PositionCli> validMoves = new ArrayList<PositionCli>();
+    public ArrayList<String> getValidMoves() {
+        validMoves.clear();
 
         // Possible king move offsets
         int[][] moveOffsets = {
@@ -21,14 +21,14 @@ public class KingCli extends ChessPieceCli {
         };
 
         for (int[] offset : moveOffsets) {
-            int newRow = this.position.getRow() + offset[0];
-            int newColumn = this.position.getColumn() + offset[1];
+            int newRow = this.row + offset[0];
+            int newColumn = this.column + offset[1];
 
             if (isValidPosition(newRow, newColumn)) {
                 ChessPieceCli targetPiece = chessBoard.getChessSquare(newRow, newColumn).getChessPiece();
                 
                 if (targetPiece == null || targetPiece.isGold() == this.isSilver()) {
-                    validMoves.add(new PositionCli(newRow, newColumn));
+                    validMoves.add(ChessBoardCli.getPositionString(newRow, newColumn));
                 }
             }
         }

@@ -5,9 +5,20 @@ import chess_cli.ChessPieces.ChessPieceCli;
 public class ChessSquareCli {
 	private boolean filled;
 	private ChessPieceCli chessPiece;
+	private int row, column;
 	
-	public ChessSquareCli() {
+	public ChessSquareCli(int row, int column) {
 		this.markEmpty();
+		this.row = row;
+		this.column = column;
+	}
+	
+	public int getRow() {
+		return this.row;
+	}
+	
+	public int getColumn() {
+		return this.column;
 	}
 	
 	public boolean isEmpty() {

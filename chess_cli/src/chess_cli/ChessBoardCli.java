@@ -1,23 +1,24 @@
 package chess_cli;
-import java.util.ArrayList;
 import chess_cli.ChessPieces.*;
 import java.util.*;
 
 public class ChessBoardCli {
 
     private ArrayList<ArrayList<ChessSquareCli>> chessBoard;
+    private Map<String, ArrayList<String>> pieceMoves;
     
     public ChessBoardCli() {
     	chessBoard = new ArrayList<>();
     	initializeSquares();
     	initializePieces();
+    	pieceMoves = new HashMap<String, ArrayList<String>>();
     }
     
     private void initializeSquares() {
-    	for (int i = 0; i < 8; i++) {
+    	for (int row = 0; row < 8; row++) {
     		ArrayList<ChessSquareCli> chessRow = new ArrayList<>();
-    		for (int j = 0; j < 8; j++) {
-    			chessRow.add(new ChessSquareCli());
+    		for (int column = 0; column < 8; column++) {
+    			chessRow.add(new ChessSquareCli(row, column));
     		}
     		chessBoard.add(chessRow);
     	}
@@ -86,14 +87,21 @@ public class ChessBoardCli {
         return chessBoard.get(row).get(column);
     }
     
-    public Map<PositionCli, ArrayList<PositionCli>> getPieceMoves(boolean color) {
-    	Map<PositionCli, ArrayList<PositionCli>> pieceMoves = new HashMap<PositionCli, ArrayList<PositionCli>>();
+    public ChessSquareCli getChessSquare(String positionString) {
+    	return chessBoard.get(((int) positionString.charAt(0)) - 65).get(((int) positionString.charAt(1)) - 49);
+    }
+    
+    public Map<String, ArrayList<String>> getPieceMoves(boolean color) {
+    	pieceMoves.clear();
     	for (int i = 0; i < 8; i++) {
     		for (int j = 0; j < 8; j++) {
     			if (!this.getChessSquare(i, j).isEmpty()) {
     				ChessPieceCli chessPiece = this.getChessSquare(i, j).getChessPiece();
     				if (chessPiece.isGold() == color){
-    					pieceMoves.put(new PositionCli(i, j), chessPiece.getValidMoves());
+    					ArrayList<String> validMoves = chessPiece.getValidMoves();
+    					if (!validMoves.isEmpty()) {
+    						pieceMoves.put(ChessBoardCli.getPositionString(i, j), validMoves);
+    					}
     				}
     			}
     		}
@@ -119,4 +127,28 @@ public class ChessBoardCli {
 			System.out.print("\n");
 		}
 	}
+    
+    public boolean isValidMove(String initPositionString, String destSquareString) {
+		if (pieceMoves.containsKey(initPositionString)
+				&& pieceMoves.get(initPositionString).contains(destSquareString)) {
+			return true;
+		}
+		return false;
+	}
+    
+    public void move(String initSquare, String destSquare) {
+    	this.move(this.getChessSquare(initSquare), this.getChessSquare(destSquare));
+    }
+    
+    public void move(ChessSquareCli initSquare, ChessSquareCli destSquare) {
+    	initSquare.getChessPiece().setPosition(destSquare.getRow(), destSquare.getColumn());
+    	destSquare.setChessPiece(initSquare.getChessPiece());
+    	destSquare.markFilled();
+    	initSquare.markEmpty();
+    }
+    
+    public static String getPositionString(int row, int column) {
+    	return ((char)(row + 65) + Integer.toString(column + 1));
+    }
+    
 }
