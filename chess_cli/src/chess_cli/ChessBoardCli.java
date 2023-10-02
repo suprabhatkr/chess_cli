@@ -6,12 +6,16 @@ public class ChessBoardCli {
 
     private ArrayList<ArrayList<ChessSquareCli>> chessBoard;
     private Map<String, ArrayList<String>> pieceMoves;
+    ArrayList<Move> movesPlayed;
+    boolean turn;
     
     public ChessBoardCli() {
-    	chessBoard = new ArrayList<>();
+    	this.chessBoard = new ArrayList<>();
     	initializeSquares();
     	initializePieces();
-    	pieceMoves = new HashMap<String, ArrayList<String>>();
+    	this.pieceMoves = new HashMap<String, ArrayList<String>>();
+    	this.movesPlayed = new ArrayList<Move>();
+    	this.turn = true;
     }
     
     private void initializeSquares() {
@@ -91,13 +95,13 @@ public class ChessBoardCli {
     	return chessBoard.get(((int) positionString.charAt(0)) - 65).get(((int) positionString.charAt(1)) - 49);
     }
     
-    public Map<String, ArrayList<String>> getPieceMoves(boolean color) {
+    public Map<String, ArrayList<String>> getPieceMoves() {
     	pieceMoves.clear();
     	for (int i = 0; i < 8; i++) {
     		for (int j = 0; j < 8; j++) {
     			if (!this.getChessSquare(i, j).isEmpty()) {
     				ChessPieceCli chessPiece = this.getChessSquare(i, j).getChessPiece();
-    				if (chessPiece.isGold() == color){
+    				if (chessPiece.isGold() == this.turn){
     					ArrayList<String> validMoves = chessPiece.getValidMoves();
     					if (!validMoves.isEmpty()) {
     						pieceMoves.put(ChessBoardCli.getPositionString(i, j), validMoves);
@@ -141,10 +145,33 @@ public class ChessBoardCli {
     }
     
     public void move(ChessSquareCli initSquare, ChessSquareCli destSquare) {
+    	movesPlayed.add(new Move(initSquare, destSquare));
     	initSquare.getChessPiece().setPosition(destSquare.getRow(), destSquare.getColumn());
     	destSquare.setChessPiece(initSquare.getChessPiece());
     	destSquare.markFilled();
     	initSquare.markEmpty();
+    	this.turn = !this.turn;
+    }
+    
+    public void undo() {
+    	int lastIndex = movesPlayed.size() - 1;
+    	try {
+    		Move lastMove = movesPlayed.get(lastIndex);
+    		lastMove.getInitPiece().setPosition(lastMove.getInitRow(), lastMove.getInitColumn());
+        	lastMove.getInitSquare().setChessPiece(lastMove.getInitPiece());
+        	lastMove.getInitSquare().markFilled();
+        	if (lastMove.getDestPiece() != null) {
+        		lastMove.getDestPiece().setPosition(lastMove.getDestRow(), lastMove.getDestColumn());
+        		lastMove.getDestSquare().setChessPiece(lastMove.getDestPiece());
+        		lastMove.getDestSquare().markFilled();
+        	} else {
+        		lastMove.getDestSquare().markEmpty();
+        	}
+        	movesPlayed.remove(lastIndex);
+        	this.turn = !this.turn;
+    	} catch (IndexOutOfBoundsException e) {
+            System.out.println("An IndexOutOfBoundsException occurred: " + e.getMessage());
+        }
     }
     
     public static String getPositionString(int row, int column) {

@@ -21,7 +21,7 @@ public class GameCli {
 			System.out.print("Enter Second Player Name : ");
 			String name2 = scanner.nextLine();
 			
-			turn = true;
+			turn = false;
 			
 			player1 = new ChessPlayerCli(name1, turn);
 			player2 = new ChessPlayerCli(name2, !turn);
@@ -29,26 +29,29 @@ public class GameCli {
 			// TODO: loop for playing games until some result comes or quit is called
 			while (true) {
 				chessBoard.printChessBoard();
-				for (Map.Entry<String, ArrayList<String>> validMoves: chessBoard.getPieceMoves(turn).entrySet()) {
+				for (Map.Entry<String, ArrayList<String>> validMoves: chessBoard.getPieceMoves().entrySet()) {
 					System.out.print("Init Position : " + validMoves.getKey() + " Valid Moves :");
 					for (String validMove: validMoves.getValue()) {
 						System.out.print(" " + validMove);
 					}
 					System.out.print("\n");
 				}
-				System.out.print("Enter you current Position (or quit) : ");
+				System.out.print("Enter you current Position (or quit/undo) : ");
 				String initSquare = scanner.nextLine();
+				String destSquare = "quit";
 				if (initSquare.equals("quit")) {
 					break;
+				} else if (initSquare.equals("undo")) {
+					chessBoard.undo();
+				} else {
+					System.out.print("Enter your destination (or quit) : ");
+					destSquare = scanner.nextLine();
+					if (destSquare.equals("quit")) {
+						break;
+					}
 				}
-				System.out.print("Enter your destination (or quit) : ");
-				String destinationSquare = scanner.nextLine();
-				if (destinationSquare.equals("quit")) {
-					break;
-				}
-				if (chessBoard.isValidMove(initSquare, destinationSquare)) {
-					chessBoard.move(initSquare, destinationSquare);
-					turn = !turn;
+				if (chessBoard.isValidMove(initSquare, destSquare)) {
+					chessBoard.move(initSquare, destSquare);
 				} else {
 					System.out.println("Enter valid steps");
 				}
