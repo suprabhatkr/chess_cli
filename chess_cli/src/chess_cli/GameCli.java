@@ -12,14 +12,19 @@ public class GameCli {
 		scanner = new Scanner(System.in);
 		
 		if (cli) {
+			System.out.print("Enter Game type 1. Play with Friends   or   2. Play with Computer : ");
+			int gameType = scanner.nextInt();
+			scanner.nextLine();
 			System.out.print("Enter First Player Name : ");
 			String name1 = scanner.nextLine();
-			System.out.print("Enter Second Player Name : ");
-			String name2 = scanner.nextLine();
+			if (1 == gameType) {
+				System.out.print("Enter Second Player Name : ");
+				String name2 = scanner.nextLine();
+				chessBoard = new ChessBoardCli(name1, name2);
+			} else {
+				chessBoard = new ChessBoardCli(name1);
+			}
 			
-			chessBoard = new ChessBoardCli(name1, name2);
-			
-			// TODO: loop for playing games until some result comes or quit is called
 			while (true) {
 				chessBoard.printPlayerStat();
 				chessBoard.printChessBoard();
@@ -37,17 +42,24 @@ public class GameCli {
 					break;
 				} else if (initSquare.equals("undo")) {
 					chessBoard.undo();
+					if (2 == gameType) {
+						chessBoard.undo();
+					}
 				} else {
 					System.out.print("Enter your destination (or quit) : ");
 					destSquare = scanner.nextLine();
 					if (destSquare.equals("quit")) {
 						break;
 					}
-				}
-				if (chessBoard.isValidMove(initSquare, destSquare)) {
-					chessBoard.move(initSquare, destSquare);
-				} else {
-					System.out.println("Enter valid steps");
+					if (chessBoard.isValidMove(initSquare, destSquare)) {
+						chessBoard.move(initSquare, destSquare);
+					} else {
+						System.out.println("Enter valid steps");
+					}
+					if (2 == gameType) {
+						String bestMoveString = chessBoard.getBestMove(1);
+						chessBoard.move(bestMoveString.substring(0, 2), bestMoveString.substring(2, 4));
+					}
 				}
 			}
 		}

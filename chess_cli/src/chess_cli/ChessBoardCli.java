@@ -1,6 +1,6 @@
 package chess_cli;
 import chess_cli.ChessPieces.*;
-import chess_cli.Player.ChessPlayerCli;
+import chess_cli.Player.*;
 
 import java.util.*;
 
@@ -12,15 +12,25 @@ public class ChessBoardCli {
     boolean turn;
     private ChessPlayerCli player1, player2;
     
-    public ChessBoardCli(String name1, String name2) {
+    public void initiateBoard() {
     	this.chessBoard = new ArrayList<>();
     	initializeSquares();
     	initializePieces();
     	this.pieceMoves = new HashMap<String, ArrayList<String>>();
     	this.movesPlayed = new ArrayList<Move>();
     	this.turn = true;
+    }
+    
+    public ChessBoardCli(String name1, String name2) {
+    	initiateBoard();
     	this.player1 = new ChessPlayerCli(name1, turn);
 		this.player2 = new ChessPlayerCli(name2, !turn);
+    }
+    
+    public ChessBoardCli(String name1) {
+    	initiateBoard();
+    	this.player1 = new ChessPlayerCli(name1, turn);
+		this.player2 = new BotPlayerCli(!turn);
     }
     
     private void initializeSquares() {
@@ -200,6 +210,7 @@ public class ChessBoardCli {
 					highestPoints = points;
 					bestMove = initPosition + validMove;
 				}
+				this.undo();
 			}
 		}
     	return bestMove;
