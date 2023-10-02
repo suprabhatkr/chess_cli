@@ -7,27 +7,21 @@ import java.util.*;
 public class GameCli {
 	private ChessBoardCli chessBoard;
 	private Scanner scanner;
-	private ChessPlayerCli player1, player2;
-	private boolean turn;
 	
 	public GameCli(boolean cli) {
 		scanner = new Scanner(System.in);
-		chessBoard = new ChessBoardCli();
+		
 		if (cli) {
-			chessBoard.printChessBoard();
-			
 			System.out.print("Enter First Player Name : ");
 			String name1 = scanner.nextLine();
 			System.out.print("Enter Second Player Name : ");
 			String name2 = scanner.nextLine();
 			
-			turn = false;
-			
-			player1 = new ChessPlayerCli(name1, turn);
-			player2 = new ChessPlayerCli(name2, !turn);
+			chessBoard = new ChessBoardCli(name1, name2);
 			
 			// TODO: loop for playing games until some result comes or quit is called
 			while (true) {
+				chessBoard.printPlayerStat();
 				chessBoard.printChessBoard();
 				for (Map.Entry<String, ArrayList<String>> validMoves: chessBoard.getPieceMoves().entrySet()) {
 					System.out.print("Init Position : " + validMoves.getKey() + " Valid Moves :");

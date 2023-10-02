@@ -14,4 +14,12 @@ public class ChessPlayerCli {
 	public void addPoints(int points) {
 		this.points += points;
 	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getPoints() {
+		return this.points;
+	}
 }

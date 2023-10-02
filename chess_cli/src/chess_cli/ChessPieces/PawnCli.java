@@ -7,6 +7,7 @@ public class PawnCli extends ChessPieceCli {
     public PawnCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
         super(chessBoard, color, row, column);
         this.name = "pawn";
+        this.points = 1;
     }
 
     @Override

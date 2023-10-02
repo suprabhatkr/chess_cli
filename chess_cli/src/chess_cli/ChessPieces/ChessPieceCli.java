@@ -8,6 +8,7 @@ public class ChessPieceCli {
 	protected int row, column;
 	protected ChessBoardCli chessBoard;
 	protected ArrayList<String> validMoves;
+	protected int points;
 	
 	public ChessPieceCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
 		this.color = color;
@@ -36,6 +37,10 @@ public class ChessPieceCli {
 	public void setPosition(int row, int column) {
 		this.row = row;
 		this.column = column;
+	}
+	
+	public int getPoints() {
+		return this.points;
 	}
 	
 }

@@ -7,6 +7,7 @@ public class QueenCli extends ChessPieceCli {
     public QueenCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
         super(chessBoard, color, row, column);
         this.name = "quen";
+        this.points = 5;
     }
 
     @Override

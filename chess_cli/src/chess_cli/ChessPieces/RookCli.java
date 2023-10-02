@@ -7,6 +7,7 @@ public class RookCli extends ChessPieceCli {
     public RookCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
         super(chessBoard, color, row, column);
         this.name = "rook";
+        this.points = 4;
     }
 
     @Override

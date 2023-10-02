@@ -44,4 +44,12 @@ public class Move {
 	public int getDestColumn() {
 		return this.destSquare.getColumn();
 	}
+	
+	public int getPoints() {
+		if (destPiece != null) {
+			return destPiece.getPoints();
+		} else {
+			return 0;
+		}
+	}
 }
