@@ -12,7 +12,7 @@ public class KnightCli extends ChessPieceCli {
 
     @Override
     public ArrayList<String> getValidMoves() {
-        validMoves.clear();
+    	ArrayList<String> validMoves = new ArrayList<String>();
 
         // Define knight move offsets
         int[][] moveOffsets = {

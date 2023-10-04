@@ -12,7 +12,7 @@ public class RookCli extends ChessPieceCli {
 
     @Override
     public ArrayList<String> getValidMoves() {
-        validMoves.clear();
+    	ArrayList<String> validMoves = new ArrayList<String>();
 
         // Define horizontal and vertical move directions
         int[][] moveOffsets = {

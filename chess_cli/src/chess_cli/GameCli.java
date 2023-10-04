@@ -7,6 +7,7 @@ import java.util.*;
 public class GameCli {
 	private ChessBoardCli chessBoard;
 	private Scanner scanner;
+	private int level;
 	
 	public GameCli(boolean cli) {
 		scanner = new Scanner(System.in);
@@ -23,6 +24,9 @@ public class GameCli {
 				chessBoard = new ChessBoardCli(name1, name2);
 			} else {
 				chessBoard = new ChessBoardCli(name1);
+				System.out.print("Enter Level (1, 2, 3, 4, 5, 6) : ");
+				level = scanner.nextInt();
+				scanner.nextLine();
 			}
 			
 			while (true) {
@@ -57,7 +61,7 @@ public class GameCli {
 						System.out.println("Enter valid steps");
 					}
 					if (2 == gameType) {
-						String bestMoveString = chessBoard.getBestMove(1);
+						String bestMoveString = chessBoard.getBestMove(level);
 						chessBoard.move(bestMoveString.substring(0, 2), bestMoveString.substring(2, 4));
 					}
 				}

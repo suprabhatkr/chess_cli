@@ -12,7 +12,7 @@ public class BishopCli extends ChessPieceCli {
 
     @Override
     public ArrayList<String> getValidMoves() {
-        validMoves.clear();
+    	ArrayList<String> validMoves = new ArrayList<String>();
 
         // Define diagonal move directions
         int[][] diagonalOffsets = {

@@ -12,7 +12,7 @@ public class QueenCli extends ChessPieceCli {
 
     @Override
     public ArrayList<String> getValidMoves() {
-        validMoves.clear();
+    	ArrayList<String> validMoves = new ArrayList<String>();
 
         // Horizontal and vertical moves
         for (int offset = -1; offset <= 1; offset++) {

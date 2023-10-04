@@ -7,7 +7,6 @@ public class ChessPieceCli {
 	protected boolean color;
 	protected int row, column;
 	protected ChessBoardCli chessBoard;
-	protected ArrayList<String> validMoves;
 	protected int points;
 	
 	public ChessPieceCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
@@ -15,7 +14,6 @@ public class ChessPieceCli {
 		this.row = row;
 		this.column = column;
 		this.chessBoard = chessBoard;
-		validMoves = new ArrayList<String>();
 	}
 	
 	public boolean isGold() {

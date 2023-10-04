@@ -12,7 +12,7 @@ public class KingCli extends ChessPieceCli {
 
     @Override
     public ArrayList<String> getValidMoves() {
-        validMoves.clear();
+        ArrayList<String> validMoves = new ArrayList<String>();
 
         // Possible king move offsets
         int[][] moveOffsets = {

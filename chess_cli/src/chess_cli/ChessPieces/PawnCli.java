@@ -12,7 +12,7 @@ public class PawnCli extends ChessPieceCli {
 
     @Override
     public ArrayList<String> getValidMoves() {
-        validMoves.clear();
+    	ArrayList<String> validMoves = new ArrayList<String>();
         int forwardDirection = this.isSilver() ? 1 : -1;
         int newRow = this.row + forwardDirection;
         int newColumn = this.column;
