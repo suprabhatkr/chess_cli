@@ -1,24 +1,25 @@
-package chess_cli.ChessPieces;
+package in.suprabhatkumar.chess.chess_cli.ChessPieces;
 
-import chess_cli.ChessBoardCli;
+import in.suprabhatkumar.chess.chess_cli.ChessBoardCli;
 import java.util.ArrayList;
 
-public class KingCli extends ChessPieceCli {
-    public KingCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
+public class KnightCli extends ChessPieceCli {
+    public KnightCli(ChessBoardCli chessBoard, boolean color, int row, int column) {
         super(chessBoard, color, row, column);
-        this.name = "KING";
-        this.points = 100;
+        this.name = "kngt";
+        this.points = 3;
     }
 
     @Override
     public ArrayList<String> getValidMoves() {
-        ArrayList<String> validMoves = new ArrayList<String>();
+    	ArrayList<String> validMoves = new ArrayList<String>();
 
-        // Possible king move offsets
+        // Define knight move offsets
         int[][] moveOffsets = {
-            {-1, -1}, {-1, 0}, {-1, 1},
-            {0, -1},           {0, 1},
-            {1, -1}, {1, 0}, {1, 1}
+            {-2, -1}, {-2, 1},
+            {-1, -2}, {-1, 2},
+            {1, -2},  {1, 2},
+            {2, -1},  {2, 1}
         };
 
         for (int[] offset : moveOffsets) {
@@ -27,7 +28,7 @@ public class KingCli extends ChessPieceCli {
 
             if (isValidPosition(newRow, newColumn)) {
                 ChessPieceCli targetPiece = chessBoard.getChessSquare(newRow, newColumn).getChessPiece();
-                
+
                 if (targetPiece == null || targetPiece.isGold() == this.isSilver()) {
                     validMoves.add(ChessBoardCli.getPositionString(newRow, newColumn));
                 }

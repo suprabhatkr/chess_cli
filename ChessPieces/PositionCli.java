@@ -1,4 +1,4 @@
-package chess_cli.ChessPieces;
+package in.suprabhatkumar.chess.chess_cli.ChessPieces;
 
 public class PositionCli {
 	private int row, column;

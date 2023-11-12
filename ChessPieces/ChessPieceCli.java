@@ -1,5 +1,5 @@
-package chess_cli.ChessPieces;
-import chess_cli.ChessBoardCli;
+package in.suprabhatkumar.chess.chess_cli.ChessPieces;
+import in.suprabhatkumar.chess.chess_cli.ChessBoardCli;
 import java.util.*;
 
 public class ChessPieceCli {

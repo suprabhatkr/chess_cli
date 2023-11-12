@@ -1,7 +1,7 @@
-package chess_cli;
+package in.suprabhatkumar.chess.chess_cli;
 
-import chess_cli.ChessPieces.*;
-import chess_cli.Player.*;
+import in.suprabhatkumar.chess.chess_cli.ChessPieces.*;
+import in.suprabhatkumar.chess.chess_cli.Player.*;
 import java.util.*;
 
 public class GameCli {

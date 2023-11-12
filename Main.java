@@ -1,4 +1,4 @@
-package chess_cli;
+package in.suprabhatkumar.chess.chess_cli;
 
 public class Main {
 

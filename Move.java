@@ -1,6 +1,6 @@
-package chess_cli;
+package in.suprabhatkumar.chess.chess_cli;
 
-import chess_cli.ChessPieces.*;
+import in.suprabhatkumar.chess.chess_cli.ChessPieces.*;
 
 public class Move {
 	private ChessSquareCli initSquare, destSquare;

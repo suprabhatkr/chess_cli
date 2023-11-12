@@ -1,4 +1,4 @@
-package chess_cli.Player;
+package in.suprabhatkumar.chess.chess_cli.Player;
 
 public class ChessPlayerCli {
 	protected String name;

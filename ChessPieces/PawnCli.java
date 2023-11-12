@@ -1,6 +1,6 @@
-package chess_cli.ChessPieces;
+package in.suprabhatkumar.chess.chess_cli.ChessPieces;
 
-import chess_cli.ChessBoardCli;
+import in.suprabhatkumar.chess.chess_cli.ChessBoardCli;
 import java.util.ArrayList;
 
 public class PawnCli extends ChessPieceCli {
